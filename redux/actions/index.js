@@ -1,20 +1,20 @@
-import { ADD_INGREDIENT, DELETE_INGREDIENT } from '../constants/actionTypes';
+import { ADD_ITEM, DELETE_ITEM } from '../constants/actionTypes';
 
-export function addIngredient(text) {
-  return { type: ADD_INGREDIENT, text };
+export function addItem(text) {
+  return { type: ADD_ITEM, text };
 }
 
-export function deleteIngredient(index) {
-  return { type: DELETE_INGREDIENT, index };
+export function deleteItem(index) {
+  return { type: DELETE_ITEM, index };
 }
 
-export function addIngredientAsync(text) {
+export function addItemAsync(text) {
   return (dispatch) => {
     if (text === 'Grapes') {
       return;
     }
     setTimeout(() => {
-      dispatch(addIngredient(text));
+      dispatch(addItem(text));
     }, 1000);
   };
 }

@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteIngredient } from '../redux/actions';
+import { deleteItem } from '../redux/actions';
 
 const List = (props) => {
-  const ingredients = useSelector((state) => state.ingredients);
+  const items = useSelector((state) => state.items);
   const dispatch = useDispatch();
   return (
     <View>
-      {ingredients.map((el, i) => {
+      {items.map((el, i) => {
         return (
           <View style={styles.space} key={i}>
             <View style={styles.row}>
@@ -17,7 +17,7 @@ const List = (props) => {
             </View>
             <Text
               onPress={() => {
-                dispatch(deleteIngredient(i));
+                dispatch(deleteItem(i));
               }}>
               &#x1F5D1;
             </Text>

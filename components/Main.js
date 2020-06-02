@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, StatusBar, TextInput } from 'react-native';
 import List from './List';
 import { connect } from 'react-redux';
-import { ADD_INGREDIENT } from '../redux/constants/actionTypes';
+import { ADD_ITEM } from '../redux/constants/actionTypes';
 import store from '../redux/store/index';
-import { addIngredient, addIngredientAsync } from '../redux/actions';
+import { addItem, addItemAsync } from '../redux/actions';
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ingredient: '',
+      item: '',
     };
   }
   // componentDidMount() {
@@ -18,31 +18,31 @@ class Main extends Component {
   //   store.subscribe(() => {
   //     console.log('new state change');
   //   });
-  //   store.dispatch(addIngredient('cherries'));
+  //   store.dispatch(addItem('cherries'));
   // }
-  handleAddIngredient = () => {
-    // if (this.state.ingredient.trim().length) {
-    this.props.addIngredient(this.state.ingredient);
+  handleAddItem = () => {
+    // if (this.state.item.trim().length) {
+    this.props.addItem(this.state.item);
     this.setState({
-      ingredient: '',
+      item: '',
     });
     // }
     this.textInput.clear();
   };
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: '#50A0FF' }}>
+      <View style={styles.main}>
         <StatusBar backgroundColor="#50A0FF" barStyle="light-content" />
-        <Text style={styles.title}>{this.props.recipe}</Text>
+        <Text style={styles.title}>{this.props.event}</Text>
         <View style={styles.small_container}>
-          <Text style={styles.subtitle}>Ingredients</Text>
+          <Text style={styles.subtitle}>What to bring:</Text>
           <List />
           <View style={styles.textinput_container}>
             <TextInput
-              placeholder="Ingredient"
+              placeholder="Item"
               placeholderTextColor="#8A9AAD"
               onChangeText={(val) => {
-                this.setState({ ingredient: val });
+                this.setState({ item: val });
               }}
               ref={(component) => {
                 this.textInput = component;
@@ -50,17 +50,15 @@ class Main extends Component {
               multiline={true}
               blurOnSubmit={true}
               onEndEditing={() => {
-                this.handleAddIngredient();
+                this.handleAddItem();
               }}
-              style={{
-                paddingLeft: '4%',
-              }}
+              style={styles.padding}
             />
             <View style={styles.button}>
               <Text
-                style={{ color: '#fff' }}
+                style={styles.white}
                 onPress={() => {
-                  this.handleAddIngredient();
+                  this.handleAddItem();
                 }}>
                 Add
               </Text>
@@ -74,13 +72,13 @@ class Main extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    recipe: state.recipe,
+    event: state.event,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addIngredient: (text) => dispatch(addIngredientAsync(text)),
+    addItem: (text) => dispatch({ type: ADD_ITEM, text }),
   };
 };
 
@@ -99,7 +97,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 30,
     paddingTop: '15%',
-    paddingBottom: '9%',
+    paddingBottom: '5%',
     color: '#fff',
     fontWeight: 'bold',
     letterSpacing: 0.8,
@@ -138,5 +136,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: '7%',
     borderRadius: 30,
     margin: '1%',
+  },
+  main: { flex: 1, backgroundColor: '#50A0FF' },
+  white: { color: '#fff' },
+  padding: {
+    paddingLeft: '4%',
   },
 });

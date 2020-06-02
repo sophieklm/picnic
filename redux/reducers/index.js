@@ -1,21 +1,21 @@
-import { ADD_INGREDIENT, DELETE_INGREDIENT } from '../constants/actionTypes';
+import { ADD_ITEM, DELETE_ITEM } from '../constants/actionTypes';
 
 const initialState = {
-  ingredients: [],
-  recipe: 'Fruitsalad',
+  items: [],
+  event: 'Picnic',
 };
 
 function rootReducer(state = initialState, action) {
-  if (action.type === ADD_INGREDIENT) {
+  if (action.type === ADD_ITEM) {
     return Object.assign({}, state, {
-      ingredients: state.ingredients.concat(action.text),
+      items: state.items.concat(action.text),
     });
   }
-  if (action.type === DELETE_INGREDIENT) {
+  if (action.type === DELETE_ITEM) {
     return Object.assign({}, state, {
-      ingredients: state.ingredients
+      items: state.items
         .slice(0, action.index)
-        .concat(state.ingredients.slice(action.index + 1)),
+        .concat(state.items.slice(action.index + 1)),
     });
   }
   return state;
