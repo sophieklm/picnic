@@ -3,8 +3,8 @@ import { StyleSheet, View, Text, StatusBar, TextInput } from 'react-native';
 import List from './List';
 import { connect } from 'react-redux';
 import { ADD_ITEM } from '../redux/constants/actionTypes';
-import store from '../redux/store/index';
-import { addItem, addItemAsync } from '../redux/actions';
+// import store from '../redux/store/index';
+// import { addItem, addItemAsync } from '../redux/actions';
 
 class Main extends Component {
   constructor(props) {

@@ -9,4 +9,4 @@ react-native run-ios
 react-native run-android
 ```
 
-![screenshot](images/screenshot.png)
+<img src="images/screenshot.png" width="200">
