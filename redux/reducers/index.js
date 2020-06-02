@@ -1,4 +1,4 @@
-import { ADD_INGREDIENT, DELETE_INGREDIENT } from './constants/actionTypes';
+import { ADD_INGREDIENT, DELETE_INGREDIENT } from '../constants/actionTypes';
 
 const initialState = {
   ingredients: [],

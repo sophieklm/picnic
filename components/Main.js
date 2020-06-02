@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, StatusBar, TextInput } from 'react-native';
 import List from './List';
 import { connect } from 'react-redux';
+import { ADD_INGREDIENT } from '../redux/constants/actionTypes';
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ingredients: [],
       ingredient: '',
     };
   }
   handleAddIngredient = () => {
     if (this.state.ingredient.trim().length) {
+      this.props.addIngredient(this.state.ingredient);
       this.setState({
-        ingredients: this.state.ingredients.concat(this.state.ingredient),
         ingredient: '',
       });
     }
@@ -27,7 +27,7 @@ class Main extends Component {
         <Text style={styles.title}>{this.props.recipe}</Text>
         <View style={styles.small_container}>
           <Text style={styles.subtitle}>Ingredients</Text>
-          <List ingredients={this.state.ingredients} />
+          <List />
           <View style={styles.textinput_container}>
             <TextInput
               placeholder="Ingredient"
@@ -68,7 +68,14 @@ const mapStateToProps = (state) => {
     recipe: state.recipe,
   };
 };
-export default connect(mapStateToProps)(Main);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addIngredient: (text) => dispatch({ type: ADD_INGREDIENT, text }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
 
 const styles = StyleSheet.create({
   small_container: {
