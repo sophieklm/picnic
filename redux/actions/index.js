@@ -1,5 +1,4 @@
-const ADD_INGREDIENT = 'ADD_INGREDIENT';
-const DELETE_INGREDIENT = 'DELETE_INGREDIENT';
+import { ADD_INGREDIENT, DELETE_INGREDIENT } from './constants/actionTypes';
 
 export function addIngredient(text) {
   return { type: ADD_INGREDIENT, text };
