@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, StatusBar, TextInput } from 'react-native';
 import List from './List';
+import { connect } from 'react-redux';
 
 class Main extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class Main extends Component {
     return (
       <View style={{ flex: 1, backgroundColor: '#50A0FF' }}>
         <StatusBar backgroundColor="#50A0FF" barStyle="light-content" />
-        <Text style={styles.title}>Fruitsalad</Text>
+        <Text style={styles.title}>{this.props.recipe}</Text>
         <View style={styles.small_container}>
           <Text style={styles.subtitle}>Ingredients</Text>
           <List ingredients={this.state.ingredients} />
@@ -61,7 +62,13 @@ class Main extends Component {
     );
   }
 }
-export default Main;
+
+const mapStateToProps = (state) => {
+  return {
+    recipe: state.recipe,
+  };
+};
+export default connect(mapStateToProps)(Main);
 
 const styles = StyleSheet.create({
   small_container: {
