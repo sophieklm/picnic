@@ -3,6 +3,8 @@ import { StyleSheet, View, Text, StatusBar, TextInput } from 'react-native';
 import List from './List';
 import { connect } from 'react-redux';
 import { ADD_INGREDIENT } from '../redux/constants/actionTypes';
+import store from '../redux/store/index';
+import { addIngredient } from '../redux/actions';
 
 class Main extends Component {
   constructor(props) {
@@ -11,13 +13,20 @@ class Main extends Component {
       ingredient: '',
     };
   }
+  // componentDidMount() {
+  //   console.log(store.getState());
+  //   store.subscribe(() => {
+  //     console.log('new state change');
+  //   });
+  //   store.dispatch(addIngredient('cherries'));
+  // }
   handleAddIngredient = () => {
-    if (this.state.ingredient.trim().length) {
-      this.props.addIngredient(this.state.ingredient);
-      this.setState({
-        ingredient: '',
-      });
-    }
+    // if (this.state.ingredient.trim().length) {
+    this.props.addIngredient(this.state.ingredient);
+    this.setState({
+      ingredient: '',
+    });
+    // }
     this.textInput.clear();
   };
   render() {
