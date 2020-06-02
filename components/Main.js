@@ -4,7 +4,7 @@ import List from './List';
 import { connect } from 'react-redux';
 import { ADD_INGREDIENT } from '../redux/constants/actionTypes';
 import store from '../redux/store/index';
-import { addIngredient } from '../redux/actions';
+import { addIngredient, addIngredientAsync } from '../redux/actions';
 
 class Main extends Component {
   constructor(props) {
@@ -80,7 +80,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addIngredient: (text) => dispatch({ type: ADD_INGREDIENT, text }),
+    addIngredient: (text) => dispatch(addIngredientAsync(text)),
   };
 };
 

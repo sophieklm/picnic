@@ -42,5 +42,6 @@ const styles = StyleSheet.create({
   space: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingBottom: '2%',
   },
 });
