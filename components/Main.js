@@ -1,9 +1,8 @@
-/***Main.js***/
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, StatusBar, TextInput } from 'react-native';
 import List from './List';
 
-class Main extends React.Component {
+class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -76,7 +75,7 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
     fontSize: 30,
-    paddingTop: '6%',
+    paddingTop: '15%',
     paddingBottom: '9%',
     color: '#fff',
     fontWeight: 'bold',

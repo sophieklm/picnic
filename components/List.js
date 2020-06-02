@@ -1,5 +1,4 @@
-/*** List.js ***/
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 const List = (props) => {
@@ -7,13 +6,8 @@ const List = (props) => {
     <View>
       {props.ingredients.map((el, i) => {
         return (
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}
-            key={i}>
-            <View style={{ flexDirection: 'row' }}>
+          <View style={styles.space} key={i}>
+            <View style={styles.row}>
               <View style={styles.dot} />
               <Text>{el}</Text>
             </View>
@@ -33,5 +27,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#F88A25',
     marginTop: '10%',
     marginRight: '8%',
+  },
+  row: { flexDirection: 'row' },
+  space: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
